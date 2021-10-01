@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- #34495E -->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
@@ -18,31 +19,18 @@
 
         <title>Listado de notas</title>
     </head>
-    <body>
-        <header id="main-header" class="py-2 bg-light pt-4">
+    <body class=" " style="background: #1A5276" >
+        <header id="main-header" class="py-2 bg-light pt-4" >
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h1 class="text-center">Notas</h1>
+                        <h1 class="text-center"><i class="fas fa-list-ul"></i> Notas</h1>
                     </div>
                 </div>
             </div>
         </header>
 
-        <jsp:include page="../WEB-INF/paginas/comunes/cabecera.jsp"/>
-
-        <header id="main-header" class="py-2 bg-light pt-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h1>
-                            <i class="fas fa-cog"> </i> Control Notas  <i class="fas fa-cog"> </i>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </header>
-
+        <jsp:include page="../WEB-INF/paginas/comunes/cabecera_1.jsp"/>
 
         <section id="acciones" class="py-4 mb-4" >
             <div class="container">
@@ -59,34 +47,36 @@
         <!-- Modal -->
         <div class="modal fade" id="agregar-salon-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title bg-primary" id="exampleModalLabel">Agregar estudiante</h5>
+                <div class="modal-content " style="background-color: #F2F3F4;border-color: #DEE2E6">
+                    <div class="modal-header "style="background-color: #5AA8DB">
+                        <h5 class="modal-title" id="exampleModalLabel"> <i class="fas fa-plus"></i> Agregar estudiante <i class="fas fa-plus"></i></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="POST" action="${pageContext.request.contextPath}/ServletNota">
-                        <div class="modal-body">
+                        <div class="modal-body" style="background-color: #F2F3F4;border-color: #DEE2E6">
                             <div class="mb-3">
                                 <label for="nombreActividad" class="form-label">Nombre Actividad:</label>
-                                <input type="text" id="nombreActividad" name="nombreActividad" class="form-control">
+                                <input type="text" id="nombreActividad" name="nombreActividad" style="background-color: #E6E7E8;border-color: #DEE2E6 " class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="notaActividad" class="form-label" >Nota Actividad:</label>
-                                <input type="number" id="notaActividad" name="notaActividad" class="form-control">
+                                <input type="number" id="notaActividad" name="notaActividad" style="background-color: #E6E7E8;border-color: #DEE2E6 " class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="fechaEntrega" class="form-label" >Fecha de entrega:</label>
-                                <input type="date" id="fechaEntrega" name="fechaEntrega" class="form-control">
+                                <input type="date" id="fechaEntrega" name="fechaEntrega" style="background-color: #E6E7E8;border-color: #DEE2E6 " class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="asignacionId" class="form-label">Id asignacion</label>
-                                <input type="number" id="asignacionId" name="asignacionId" class="form-control">
+                                <input type="number" id="asignacionId" name="asignacionId" style="background-color: #E6E7E8;border-color: #DEE2E6 " class="form-control">
                             </div>
 
                             <input type="hidden" name="accion" value="insertar">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Calcelar</button>
+                            <a href="${pageContext.request.contextPath}/ServletNota?accion=listar" class="btn btn-danger   btn-block">
+                                Cancelar
+                            </a>
                             <button type="submit" class="btn btn-success">Guardar</button>
                         </div>
                     </form>
@@ -95,22 +85,22 @@
             </div>
         </div>
 
-        <section id="estudiantes" class="mb-5 mt-5">
+        <section id="estudiantes" class="mb-5 m4-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-md-12">
+                    <div class="col-12 col-md-12">
 
 
-                        <div class="card">
+                        <div class="card " style="background-color: #5DADE2">
                             <div class="card-header">
-                                <h4> <i class="fas fa-school"></i> Listado de Notas <i class="fas fa-school"></i> </h4>
+                                <h4><i class="fas fa-book-open "></i> Listado de Notas <i class="fas fa-book-open"></i></h4>  
                             </div>
                         </div>
 
-                        <table class="table table-striped "> 
-                            <thead class="table-primary">
+                        <table class="table  table-striped col-12 col-md-12" style="background-color: #F2F3F4 " > 
+                            <thead class="">
                                 <tr>
-                                    <th> <i class="fas fa-book-open"></i> #</th>
+                                    <th><i class="far fa-clipboard"></i> #</th>
                                     <th>Nombre actividad</th>
                                     <th>Nota</th>
                                     <th>fecha entrega</th>
@@ -122,11 +112,11 @@
                             <tbody>
                                 <c:forEach var="nota" items="${listadoNotas}">
                                     <tr>
-                                        <td>${nota.idNota}</td>
+                                        <td><i class="far fa-clipboard"></i> ${nota.idNota}</td>
                                         <td>${nota.nombreActividad}</td>
                                         <td>${nota.notaActividad}</td>
                                         <td>${nota.fechaEntrega}</td>
-                                        <td>${nota.asignacionId}</td>
+                                        <td class="">${nota.asignacionId}</td>
 
                                         <td>
                                             <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/ServletNota?accion=editar&idNota=${nota.idNota}">
@@ -147,11 +137,11 @@
                     <div class="col-12 col-md-3 m-auto mt-4" >
 
                         <div class="row pb-5">
-                            <div class="card text-center bg-warning text-white mb-3">
+                            <div class="card text-center text-white mb-3" style="background-color: #3383FF">
                                 <div class="card-body">
                                     <h3>Promedio de notas</h3>
                                     <h4 class="display-4">
-                                        <i class="fas fa-users"></i> ${promedioNotas}
+                                        <i class="far fa-star"></i> ${promedioNotas}
                                     </h4>
                                 </div> 
                             </div>
@@ -161,11 +151,11 @@
                     <div class="col-12 col-md-3 m-auto mt-4" >
 
                         <div class="row pb-5">
-                            <div class="card text-center bg-warning text-white mb-3">
+                            <div class="card text-center text-white mb-3" style="background-color: #22DF2B">
                                 <div class="card-body">
-                                    <h3>Actividades Aprobadas</h3>
+                                    <h3>Act. Aprobadas</h3>
                                     <h4 class="display-4">
-                                        <i class="fas fa-users"></i> ${actividadesAprobadas}
+                                        <i class="far fa-smile"></i> ${actividadesAprobadas}
                                     </h4>
                                 </div> 
                             </div>
@@ -175,11 +165,11 @@
                     <div class="col-12 col-md-3 m-auto mt-4" >
 
                         <div class="row pb-5">
-                            <div class="card text-center bg-warning text-white mb-3">
+                            <div class="card text-center text-white mb-3" style="background-color: #FF3333">
                                 <div class="card-body">
-                                    <h3>Actividades Reprobadas</h3>
+                                    <h3>Act. Reprobadas</h3>
                                     <h4 class="display-4">
-                                        <i class="fas fa-users"></i> ${actividadesReprobadas}
+                                        <i class="far fa-frown"></i> ${actividadesReprobadas}
                                     </h4>
                                 </div> 
                             </div>
@@ -199,4 +189,6 @@
         <script src="../assets/js/jquery-3.6.0.js"></script>
         <script src="../assets/js/bootstrap.bundle.js"></script>
     </body>
+    <jsp:include page="../WEB-INF/paginas/comunes/pie-pagina_1.jsp"/>
+
 </html>  
