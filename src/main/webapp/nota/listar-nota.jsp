@@ -82,11 +82,8 @@
                                 <label for="asignacionId" class="form-label">Id asignacion</label>
                                 <input type="number" id="asignacionId" name="asignacionId" class="form-control">
                             </div>
-                            
+
                             <input type="hidden" name="accion" value="insertar">
-
-
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Calcelar</button>
@@ -147,17 +144,59 @@
                             </tbody>
                         </table>    
                     </div>
+                    <div class="col-12 col-md-3 m-auto mt-4" >
+
+                        <div class="row pb-5">
+                            <div class="card text-center bg-warning text-white mb-3">
+                                <div class="card-body">
+                                    <h3>Promedio de notas</h3>
+                                    <h4 class="display-4">
+                                        <i class="fas fa-users"></i> ${promedioNotas}
+                                    </h4>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 m-auto mt-4" >
+
+                        <div class="row pb-5">
+                            <div class="card text-center bg-warning text-white mb-3">
+                                <div class="card-body">
+                                    <h3>Actividades Aprobadas</h3>
+                                    <h4 class="display-4">
+                                        <i class="fas fa-users"></i> ${actividadesAprobadas}
+                                    </h4>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 m-auto mt-4" >
+
+                        <div class="row pb-5">
+                            <div class="card text-center bg-warning text-white mb-3">
+                                <div class="card-body">
+                                    <h3>Actividades Reprobadas</h3>
+                                    <h4 class="display-4">
+                                        <i class="fas fa-users"></i> ${actividadesReprobadas}
+                                    </h4>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </div>
 
 
                 </div>
             </div>
-        </div>
-    </section>
+
+        </section>
 
 
 
 
-    <script src="../assets/js/jquery-3.6.0.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-</body>
+        <script src="../assets/js/jquery-3.6.0.js"></script>
+        <script src="../assets/js/bootstrap.bundle.js"></script>
+    </body>
 </html>  

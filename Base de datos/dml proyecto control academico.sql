@@ -129,9 +129,6 @@ insert into Nota (nombre_actividad, nota_actividad, fecha_entrega, asignacion_id
 values("Tarea de Sociales",99,"2020-01-01",4);
 insert into Nota (nombre_actividad, nota_actividad, fecha_entrega, asignacion_id) 	
 values("Tarea de Biologia",98,"2020-01-01",2);
-
-
-
 -- -----------------------------------------------------
 -- Select Tablas
 -- -----------------------------------------------------

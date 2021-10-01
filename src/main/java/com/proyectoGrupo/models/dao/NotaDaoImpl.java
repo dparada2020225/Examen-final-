@@ -129,6 +129,7 @@ public class NotaDaoImpl implements INotaDao {
     @Override
     public int actualizar(Nota nota) {
         int rows = 0;
+        
         try {
             conn = Conexion.getConnection();
             pstmt = conn.prepareStatement(SQL_UPDATE);
@@ -136,7 +137,7 @@ public class NotaDaoImpl implements INotaDao {
             pstmt.setInt(2, nota.getNotaActividad());
             pstmt.setDate(3, nota.getFechaEntrega());
             pstmt.setInt(4, nota.getAsignacionId());
-            pstmt.setInt(5, nota.getAsignacionId());
+            pstmt.setInt(5, nota.getIdNota());
             System.out.println(pstmt.toString());
             rows = pstmt.executeUpdate();
 
@@ -154,7 +155,21 @@ public class NotaDaoImpl implements INotaDao {
 
     @Override
     public int eliminar(Nota nota) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    int rows = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareStatement(SQL_DELETE);
+            pstmt.setInt(1, nota.getIdNota());
+            System.out.println(pstmt.toString());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(pstmt);
+            Conexion.close(conn);
+        }
+        return rows;
     }
 
 }

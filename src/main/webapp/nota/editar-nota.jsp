@@ -60,7 +60,7 @@
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label for="nombreActividad" class="form-label">Nombre Actividad:</label>
-                                            <input type="text" id="nombreActividad" name="nombreActividad" class="form-control" value="2">
+                                            <input type="text" id="nombreActividad" name="nombreActividad" class="form-control" value="${nota.nombreActividad}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="notaActividad" class="form-label" >Nota Actividad:</label>

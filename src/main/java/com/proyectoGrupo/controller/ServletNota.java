@@ -70,7 +70,7 @@ public class ServletNota extends HttpServlet {
                     editarNotas(request, response);
                     break;
                 case "eliminar":
-                    //EliminarNotas(request, response);
+                    EliminarNotas(request, response);
                     break;
             }
 
@@ -82,12 +82,43 @@ public class ServletNota extends HttpServlet {
 
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoNotas", listarNotas);
+        sesion.setAttribute("promedioNotas", getPromedio(listarNotas));
+        sesion.setAttribute("actividadesAprobadas", getAprobados(listarNotas));
+        sesion.setAttribute("actividadesReprobadas", getReprobados(listarNotas));
         response.sendRedirect("nota/listar-nota.jsp");
 
     }
     
-   /* private void EliminarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int idSalon = Integer.parseInt(request.getParameter("idSalon"));
+    public double getPromedio(List<Nota> listarNotas) {
+        double suma = 0;
+        double promedio = 0;
+        for (Nota notas : listarNotas) {
+            suma = suma + notas.getNotaActividad();
+            promedio = suma/ listarNotas.size();
+        }
+        return promedio;
+    }
+    public double getAprobados(List<Nota> listarNotas) {
+        double contador = 0;
+        for (Nota notas : listarNotas) {
+            if (notas.getNotaActividad()>=70 ) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+    public double getReprobados(List<Nota> listarNotas) {
+        double contador = 0;
+        for (Nota notas : listarNotas) {
+            if (notas.getNotaActividad()<=69 ) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+    
+    private void EliminarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idNota = Integer.parseInt(request.getParameter("idNota"));
 
         Nota nota = new Nota(idNota);
 
@@ -95,7 +126,7 @@ public class ServletNota extends HttpServlet {
         System.out.println("cantidad de registros eliminados: " + registrosEliminados);
         listarNotas(request, response);
 
-    }*/
+    }
     
     private void editarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int idNota = Integer.parseInt(request.getParameter("idNota"));
@@ -104,17 +135,22 @@ public class ServletNota extends HttpServlet {
 
         System.out.println(nota);
 
-        request.setAttribute("Nota", nota);
+        request.setAttribute("nota", nota);
         request.getRequestDispatcher("nota/editar-nota.jsp").forward(request, response);
     }
     
     private void actualizarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException{
         
-        int idNota = Integer.parseInt(request.getParameter("id_nota"));
-        String nombreActividad = request.getParameter("nombre_actividad");
-        int notaActividad = Integer.parseInt(request.getParameter("nota_actividad"));
-        Date fechaEntrega = Date.valueOf(request.getParameter("fecha_entrega"));
-        int asignacionId = Integer.parseInt(request.getParameter("asignacion_id"));
+        int idNota = Integer.parseInt(request.getParameter("idNota"));
+        System.out.println(idNota);
+        String nombreActividad = request.getParameter("nombreActividad");
+        System.out.println(nombreActividad);
+        int notaActividad = Integer.parseInt(request.getParameter("notaActividad"));
+        System.out.println(notaActividad);
+        Date fechaEntrega = Date.valueOf(request.getParameter("fechaEntrega"));
+        System.out.println(fechaEntrega);
+        int asignacionId = Integer.parseInt(request.getParameter("asignacionId"));
+        System.out.println(asignacionId);
 
         Nota nota = new Nota(idNota, nombreActividad, notaActividad, fechaEntrega, asignacionId);
         System.out.println(nota);
