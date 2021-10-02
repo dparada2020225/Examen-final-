@@ -73,7 +73,7 @@
 
                             <input type="hidden" name="accion" value="insertar">
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" style="background: #CFF4FC; border-color: black">
                             <a href="${pageContext.request.contextPath}/ServletNota?accion=listar" class="btn btn-danger   btn-block">
                                 Cancelar
                             </a>
@@ -98,7 +98,7 @@
                         </div>
 
                         <table class="table  table-striped col-12 col-md-12" style="background-color: #F2F3F4 " > 
-                            <thead class="">
+                            <thead class="table-info">
                                 <tr>
                                     <th><i class="far fa-clipboard"></i> #</th>
                                     <th>Nombre actividad</th>

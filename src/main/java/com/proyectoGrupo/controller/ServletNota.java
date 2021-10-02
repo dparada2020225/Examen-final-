@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
 import java.util.List;
 import com.proyectoGrupo.models.dao.NotaDaoImpl;
+import com.proyectoGrupo.models.dao.NotaDaoJPA;
 import com.proyectoGrupo.models.domain.Nota;
 import java.io.IOException;
 import java.sql.Connection;
@@ -78,7 +79,8 @@ public class ServletNota extends HttpServlet {
     }
 
     private void listarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Nota> listarNotas = new NotaDaoImpl().listar();
+        //List<Nota> listarNotas = new NotaDaoImpl().listar();
+        List<Nota> listarNotas = new NotaDaoJPA().listar();
 
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoNotas", listarNotas);
@@ -120,9 +122,11 @@ public class ServletNota extends HttpServlet {
     private void EliminarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int idNota = Integer.parseInt(request.getParameter("idNota"));
 
-        Nota nota = new Nota(idNota);
-
-        int registrosEliminados = new NotaDaoImpl().eliminar(nota);
+        //Nota nota = new Nota(idNota);
+        Nota nota = new NotaDaoJPA().encontrar(new Nota(idNota));
+        
+        //int registrosEliminados = new NotaDaoImpl().eliminar(nota);
+        int registrosEliminados = new NotaDaoJPA().eliminar(nota);
         System.out.println("cantidad de registros eliminados: " + registrosEliminados);
         listarNotas(request, response);
 
@@ -131,7 +135,8 @@ public class ServletNota extends HttpServlet {
     private void editarNotas(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int idNota = Integer.parseInt(request.getParameter("idNota"));
 
-        Nota nota = new NotaDaoImpl().encontrar(new Nota(idNota));
+        //Nota nota = new NotaDaoImpl().encontrar(new Nota(idNota));
+        Nota nota = new NotaDaoJPA().encontrar(new Nota(idNota));
 
         System.out.println(nota);
 
@@ -154,7 +159,8 @@ public class ServletNota extends HttpServlet {
 
         Nota nota = new Nota(idNota, nombreActividad, notaActividad, fechaEntrega, asignacionId);
         System.out.println(nota);
-        int registrosActualizados = new NotaDaoImpl().actualizar(nota);
+        //int registrosActualizados = new NotaDaoImpl().actualizar(nota);
+        int registrosActualizados = new NotaDaoJPA().actualizar(nota);
         listarNotas(request, response);
     }
     
@@ -170,7 +176,8 @@ public class ServletNota extends HttpServlet {
         System.out.println(nota);
 
         //insertar 
-        int registrosIngresados = new NotaDaoImpl().insertar(nota);
+        //int registrosIngresados = new NotaDaoImpl().insertar(nota);
+        int registrosIngresados = new NotaDaoJPA().insertar(nota);
         System.out.println("registros ingresados:" + registrosIngresados);
         listarNotas(request, response);
         

@@ -58,7 +58,7 @@
                                 <h4><i class="far fa-edit"></i> Editar Notas <i class="far fa-edit"></i></h4>
                             </div>  
                             <div class="card-body " style="background-color: #F2F3F4;border-color: #DEE2E6">
-                                <form method="POST" action="${pageContext.request.contextPath}/ServletNota">
+                                <form  method="POST" action="${pageContext.request.contextPath}/ServletNota">
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label for="nombreActividad" class="form-label" >Nombre Actividad:</label>
@@ -86,7 +86,8 @@
 
 
                                     </div>
-                                    <div class="modal-footer">
+                                        <div class="modal-footer" style="background: #CFF4FC; border-color: black">
+                                            
                                         <a href="${pageContext.request.contextPath}/ServletNota?accion=listar" class="btn btn-danger   btn-block">
                                             Cancelar
                                         </a>

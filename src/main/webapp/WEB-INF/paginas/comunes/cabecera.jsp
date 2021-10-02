@@ -27,7 +27,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/ServletNota?accion=listar">Nota</a>
+                    <a class="nav-link active" href="${pageContext.request.contextPath}/ServletNota?accion=listar">Nota</a>
                 </li>
             </ul>
         </div>
